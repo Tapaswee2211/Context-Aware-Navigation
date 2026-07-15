@@ -1,0 +1,70 @@
+Fri Apr  3 14:35:59 2026       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.288.01             Driver Version: 535.288.01   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 4060 ...    Off | 00000000:01:00.0 Off |                  N/A |
+| N/A   51C    P3              15W /  55W |   1503MiB /  8188MiB |     20%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A      2381      G   /usr/lib/xorg/Xorg                          387MiB |
+|    0   N/A  N/A      2664      G   /usr/bin/gnome-shell                         55MiB |
+|    0   N/A  N/A      6176      G   ...cess-track-uuid=3190708988185955192      137MiB |
+|    0   N/A  N/A     23346      G   ign gazebo server                           387MiB |
+|    0   N/A  N/A     23347      G   ign gazebo gui                              518MiB |
++---------------------------------------------------------------------------------------+
+ii  libnvidia-cfg1-535:amd64                                        535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA binary OpenGL/GLX configuration library
+ii  libnvidia-common-535                                            535.288.01-0ubuntu0.22.04.1              all          Shared files used by the NVIDIA libraries
+ii  libnvidia-compute-535:amd64                                     535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA libcompute package
+ii  libnvidia-compute-535:i386                                      535.288.01-0ubuntu0.22.04.1              i386         NVIDIA libcompute package
+rc  libnvidia-compute-575:amd64                                     575.64.03-0ubuntu0.22.04.3               amd64        NVIDIA libcompute package
+rc  libnvidia-compute-580:amd64                                     580.126.09-0ubuntu0.22.04.1              amd64        NVIDIA libcompute package
+rc  libnvidia-compute-590:amd64                                     590.48.01-0ubuntu0.22.04.1               amd64        NVIDIA libcompute package
+ii  libnvidia-decode-535:amd64                                      535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA Video Decoding runtime libraries
+ii  libnvidia-decode-535:i386                                       535.288.01-0ubuntu0.22.04.1              i386         NVIDIA Video Decoding runtime libraries
+ii  libnvidia-egl-wayland1:amd64                                    1:1.1.9-1.1ubuntu0.1                     amd64        Wayland EGL External Platform library -- shared library
+ii  libnvidia-egl-wayland1:i386                                     1:1.1.9-1.1ubuntu0.1                     i386         Wayland EGL External Platform library -- shared library
+ii  libnvidia-encode-535:amd64                                      535.288.01-0ubuntu0.22.04.1              amd64        NVENC Video Encoding runtime library
+ii  libnvidia-encode-535:i386                                       535.288.01-0ubuntu0.22.04.1              i386         NVENC Video Encoding runtime library
+ii  libnvidia-extra-535:amd64                                       535.288.01-0ubuntu0.22.04.1              amd64        Extra libraries for the NVIDIA driver
+ii  libnvidia-fbc1-535:amd64                                        535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA OpenGL-based Framebuffer Capture runtime library
+ii  libnvidia-fbc1-535:i386                                         535.288.01-0ubuntu0.22.04.1              i386         NVIDIA OpenGL-based Framebuffer Capture runtime library
+ii  libnvidia-gl-535:amd64                                          535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA OpenGL/GLX/EGL/GLES GLVND libraries and Vulkan ICD
+ii  libnvidia-gl-535:i386                                           535.288.01-0ubuntu0.22.04.1              i386         NVIDIA OpenGL/GLX/EGL/GLES GLVND libraries and Vulkan ICD
+rc  linux-modules-nvidia-575-6.8.0-64-generic                       6.8.0-64.67~22.04.1+1                    amd64        Linux kernel nvidia modules for version 6.8.0-64
+rc  linux-modules-nvidia-575-6.8.0-65-generic                       6.8.0-65.68~22.04.1+1                    amd64        Linux kernel nvidia modules for version 6.8.0-65
+rc  linux-modules-nvidia-580-6.8.0-85-generic                       6.8.0-85.85~22.04.1+2                    amd64        Linux kernel nvidia modules for version 6.8.0-85
+rc  linux-modules-nvidia-580-6.8.0-87-generic                       6.8.0-87.88~22.04.1+1                    amd64        Linux kernel nvidia modules for version 6.8.0-87
+rc  linux-modules-nvidia-580-6.8.0-94-generic                       6.8.0-94.96~22.04.1                      amd64        Linux kernel nvidia modules for version 6.8.0-94
+rc  linux-objects-nvidia-575-6.8.0-64-generic                       6.8.0-64.67~22.04.1+1                    amd64        Linux kernel nvidia modules for version 6.8.0-64 (objects)
+rc  linux-objects-nvidia-575-6.8.0-65-generic                       6.8.0-65.68~22.04.1+1                    amd64        Linux kernel nvidia modules for version 6.8.0-65 (objects)
+rc  linux-objects-nvidia-580-6.8.0-85-generic                       6.8.0-85.85~22.04.1+2                    amd64        Linux kernel nvidia modules for version 6.8.0-85 (objects)
+rc  linux-objects-nvidia-580-6.8.0-87-generic                       6.8.0-87.88~22.04.1+1                    amd64        Linux kernel nvidia modules for version 6.8.0-87 (objects)
+rc  linux-objects-nvidia-580-6.8.0-94-generic                       6.8.0-94.96~22.04.1                      amd64        Linux kernel nvidia modules for version 6.8.0-94 (objects)
+ii  nvidia-compute-utils-535                                        535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA compute utilities
+rc  nvidia-compute-utils-580                                        580.126.09-0ubuntu0.22.04.1              amd64        NVIDIA compute utilities
+rc  nvidia-compute-utils-590                                        590.48.01-0ubuntu0.22.04.1               amd64        NVIDIA compute utilities
+ii  nvidia-dkms-535                                                 535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA DKMS package
+rc  nvidia-dkms-580                                                 580.126.09-0ubuntu0.22.04.1              amd64        NVIDIA DKMS package
+rc  nvidia-dkms-590-open                                            590.48.01-0ubuntu0.22.04.1               amd64        NVIDIA DKMS package (open kernel module)
+ii  nvidia-driver-535                                               535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA driver metapackage
+ii  nvidia-firmware-535-535.288.01                                  535.288.01-0ubuntu0.22.04.1              amd64        Firmware files used by the kernel module
+ii  nvidia-kernel-common-535                                        535.288.01-0ubuntu0.22.04.1              amd64        Shared files used with the kernel module
+rc  nvidia-kernel-common-575                                        575.64.03-0ubuntu0.22.04.3               amd64        Shared files used with the kernel module
+rc  nvidia-kernel-common-580                                        580.126.09-0ubuntu0.22.04.1              amd64        Shared files used with the kernel module
+rc  nvidia-kernel-common-590                                        590.48.01-0ubuntu0.22.04.1               amd64        Shared files used with the kernel module
+ii  nvidia-kernel-source-535                                        535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA kernel source package
+ii  nvidia-prime                                                    0.8.17.1                                 all          Tools to enable NVIDIA's Prime
+ii  nvidia-settings                                                 510.47.03-0ubuntu1.22.04.1               amd64        Tool for configuring the NVIDIA graphics driver
+ii  nvidia-utils-535                                                535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA driver support binaries
+ii  screen-resolution-extra                                         0.18.2ubuntu0.1                          all          Extension for the nvidia-settings control panel
+ii  xserver-xorg-video-nvidia-535                                   535.288.01-0ubuntu0.22.04.1              amd64        NVIDIA binary Xorg driver
