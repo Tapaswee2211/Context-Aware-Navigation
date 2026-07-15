@@ -221,7 +221,7 @@ The distance plot shows the robot's minimum approach distance to obstacles throu
 
 ### Robot State Timeline
 
-![Robot State Timeline](./graphs/10%20vision%20obstacles/02_state_timeline.png)
+![Robot State Timeline](./graphs/10%20vision%20obstacle/02_state_timeline.png)
 
 The color-coded state timeline visualizes transitions between navigation states. NAVIGATING (green) dominates, with TURN_COMMIT (orange) and ARM_BLOCKED (purple) segments indicating obstacle avoidance and deadlock recovery events.
 
