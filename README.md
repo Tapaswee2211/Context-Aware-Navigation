@@ -102,8 +102,8 @@ matplotlib>=3.5
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/context-aware-amr.git
-cd context-aware-amr
+git clone https://github.com/Tapaswee2211/Context-Aware-Navigation.git
+cd Context-Aware-Navigation
 ```
 
 ### 2. Create ROS 2 Workspace
@@ -111,7 +111,7 @@ cd context-aware-amr
 ```bash
 mkdir -p ~/amr_ws/src
 cd ~/amr_ws/src
-ln -s /path/to/context-aware-amr .
+ln -s /context-aware-amr .
 cd ~/amr_ws
 rosdep install --from-paths src --ignore-src -r -y
 ```
@@ -159,7 +159,7 @@ This will start all five nodes: context_manager, yolo_context_node, smart_nav_no
 ### Monitor in RViz
 
 ```bash
-ros2 run rviz2 rviz2 -c src/context-aware-amr/config/rviz_config.rviz
+ros2 run rviz2 rviz2 -c src/Context-Aware-Navigation/config/rviz_config.rviz
 ```
 
 ### Publish Waypoints
