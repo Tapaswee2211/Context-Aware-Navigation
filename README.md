@@ -11,26 +11,31 @@ This project presents a solution through the integration of three key components
 ## Key Features
 
 **Dynamic Context Classification**
+
 - Real-time environment categorization into OPEN, NARROW, and CROWDED spatial contexts using LiDAR density metrics
 - Automatic reconfiguration of Nav2 costmap parameters (inflation radius, cost scaling factor) based on context
 - Waypoint-specific speed and turn-commitment parameters that adapt to environmental constraints
 
 **Semantic Vision Integration**
+
 - YOLOv8n object detection pipeline running at real-time frame rates
 - Behavioral classification: STOP for persons and animals, SLOW for vehicles and obstacles
 - Center-zone filtering to distinguish relevant forward-path objects from peripheral detections
 
 **Structured Navigation State Machine**
+
 - Eight-state FSM (STARTUP, NAVIGATING, TURN_COMMIT, BLOCKED, ARM_BLOCKED, RECOVERY, WAYPOINT_ARRIVED, MISSION_COMPLETE)
 - Committed point-turn obstacle avoidance with directional bias toward goal waypoints
 - Automatic deadlock detection and arm-assisted recovery mechanisms
 
 **Mobile Manipulation**
+
 - Autonomous robotic arm deployment for blocked-state recovery and environmental assessment
 - Vision-guided grasp pipeline using RGB-D depth data, camera intrinsics, and 3D back-projection
 - Joint-space trajectory control with depth-adaptive end-effector positioning
 
 **Comprehensive Telemetry**
+
 - Time-series logging of distances, velocities, sector readings, and state transitions
 - Vision event logging with annotated detection frames saved at configurable intervals
 - Automated graph generation for post-hoc mission analysis
@@ -60,6 +65,7 @@ Depth Camera + CameraInfo → grasp_node → Arm Trajectory
 ## Requirements
 
 **Hardware**
+
 - Clearpath Husky A200 mobile base (or compatible differential-drive robot)
 - 2D LiDAR sensor (Hokuyo UST-10LX or equivalent, 270° FoV, 30m range)
 - Monocular RGB camera (30+ FPS, 640×480 minimum)
@@ -67,6 +73,7 @@ Depth Camera + CameraInfo → grasp_node → Arm Trajectory
 - 6-DOF serial manipulator arm
 
 **Software**
+
 - Ubuntu 22.04 LTS
 - ROS 2 Humble Hawksbill (or Iron Irwini)
 - Nav2 navigation stack
@@ -76,6 +83,7 @@ Depth Camera + CameraInfo → grasp_node → Arm Trajectory
 - OpenCV 4.5+
 
 **Python Dependencies**
+
 ```
 rclpy>=0.16
 nav2-msgs
@@ -183,15 +191,15 @@ A five-waypoint navigation mission was conducted in a Gazebo simulation environm
 
 ### Performance Metrics
 
-| Metric | Value |
-|--------|-------|
-| Mission Completion Rate | 100% (5/5 waypoints) |
-| Minimum Obstacle Distance | 0.4m |
-| Emergency Threshold Crossings | 9 |
-| Maximum Linear Velocity | 0.45 m/s |
-| Context Classification Events | 8 transitions |
-| ARM_BLOCKED Deployments | 1 |
-| YOLO STOP Compliance | 100% |
+| Metric                        | Value                |
+| ----------------------------- | -------------------- |
+| Mission Completion Rate       | 100% (5/5 waypoints) |
+| Minimum Obstacle Distance     | 0.4m                 |
+| Emergency Threshold Crossings | 9                    |
+| Maximum Linear Velocity       | 0.45 m/s             |
+| Context Classification Events | 8 transitions        |
+| ARM_BLOCKED Deployments       | 1                    |
+| YOLO STOP Compliance          | 100%                 |
 
 ### Key Findings
 
@@ -207,51 +215,52 @@ A five-waypoint navigation mission was conducted in a Gazebo simulation environm
 
 ### Obstacle Distance Over Time
 
-![Closest Obstacle Distance](01_distance.png)
+![Closest Obstacle Distance](./logs/01_distance.png)
 
 The distance plot shows the robot's minimum approach distance to obstacles throughout the mission. Dips to the emergency threshold (0.45m, red dashed line) correspond to BLOCKED state activation and turn-commitment avoidance maneuvers.
 
 ### Robot State Timeline
 
-![Robot State Timeline](02_state_timeline.png)
+![Robot State Timeline](./logs/02_state_timeline.png)
 
 The color-coded state timeline visualizes transitions between navigation states. NAVIGATING (green) dominates, with TURN_COMMIT (orange) and ARM_BLOCKED (purple) segments indicating obstacle avoidance and deadlock recovery events.
 
 ### Velocity Commands
 
-![Command Velocities](03_velocity.png)
+![Command Velocities](./logs/03_velocity.png)
 
 Linear velocity (blue) shows context-driven speed selection, while angular velocity (orange) exhibits characteristic point-turn patterns during obstacle avoidance. Speed reduction is visible in narrow passages (t=50-100s).
 
 ### LiDAR Sector Distances
 
-![LIDAR Sector Analysis](04_sectors.png)
+![LIDAR Sector Analysis](./logs/04_sectors.png)
 
 The three sector distances (center, left, right) reveal asymmetric obstacle distributions. Frequent separation of traces indicates the robot navigated through non-symmetric environments requiring directional selection during turns.
 
 ### Navigation Path with Waypoints
 
-![Robot Path](05_path.png)
+![Robot Path](./logs/05_path.png)
 
 The trajectory plot shows the robot's actual path (color-coded by time progression) through all five waypoints, with visible deviations at obstacles and smooth arrivals at waypoint locations.
 
 ### Object Detection Summary
 
-![Detection Counts](06_detection_counts.png)
+![Detection Counts](./logs/06_detection_counts.png)
 
 YOLO detected 44 person instances, 2 surfboards, and single instances of bird, frisbee, banana, and umbrella. Person class dominance reflects the stationary human-shaped obstacles in the simulation environment.
 
 ### Detection Events Timeline
 
-![Detection Timeline](07_detection_timeline.png)
+![Detection Timeline](./logs/07_detection_timeline.png)
 
 Detection events cluster around t=200-250s (WP3 to WP4 transit) and t=280-300s (WP4 to WP5 transit), corresponding to obstacle-dense regions of the path.
 
 ## Video Demonstration
 
-[**Video Demonstrating Full Mission Execution**](INSERT_VIDEO_LINK_HERE)
+[**Video Demonstrating Full Mission Execution**](./demo.webm)
 
 This video shows:
+
 - Initial robot startup and arm salute sequence
 - Navigation through open areas with context classification as OPEN
 - Entry into narrow shelving aisles with dynamic costmap reconfiguration to NARROW
@@ -275,7 +284,7 @@ def classify_context(self, ranges):
     """Classify environment based on LiDAR obstacle density."""
     valid_ranges = [r for r in ranges if 0.1 < r < float('inf')]
     density = len(valid_ranges) / len(ranges) if len(ranges) > 0 else 0.0
-    
+
     if density < 0.50:
         return "OPEN", 0.20, 2.0, 0.45, 2.0
     elif density < 0.75:
@@ -293,24 +302,24 @@ def process_detections(self, detections, frame_width):
     """Convert YOLO detections to navigation commands."""
     should_stop = False
     should_slow = False
-    
+
     for detection in detections:
         class_name = detection['class']
         confidence = detection['confidence']
         bbox = detection['bbox']  # [x, y, w, h]
-        
+
         # Relative bounding box area as distance proxy
         rel_size = (bbox['w'] * bbox['h']) / (frame_width ** 2)
-        
+
         # Center-zone check: is object in forward path?
         bbox_center_x = bbox['x'] + bbox['w'] / 2
         in_center = abs(bbox_center_x - frame_width / 2) < (0.2 * frame_width)
-        
+
         if class_name in ["person", "dog", "cat", "bird"] and in_center and rel_size > 0.03:
             should_stop = True
         elif class_name in ["car", "truck", "bicycle"] and in_center and rel_size > 0.02:
             should_slow = True
-    
+
     return should_stop, should_slow
 ```
 
@@ -322,7 +331,7 @@ The navigation state machine demonstrates the point-turn logic:
 def navigate(self, scan_data):
     """Execute state machine navigation logic."""
     min_all = min(scan_data['center'], scan_data['left'], scan_data['right'])
-    
+
     if self.state == "NAVIGATING":
         if min_all < 0.45:  # EMERGENCY_DIST
             self.state = "BLOCKED"
@@ -339,21 +348,21 @@ def navigate(self, scan_data):
                 # Obstacle detected - select turn direction
                 open_left = scan_data['left'] + scan_data['far_left']
                 open_right = scan_data['right'] + scan_data['far_right']
-                
+
                 if angle_to_wp > 0:
                     open_left += 0.5  # Bias toward waypoint
                 else:
                     open_right += 0.5
-                
+
                 turn_direction = 0.65 if open_left >= open_right else -0.65
                 self.state = "TURN_COMMIT"
                 self.turn_start = time.time()
-                
+
                 self.cmd_vel = Twist(
                     linear=Velocity(x=0.0),
                     angular=Velocity(z=turn_direction)
                 )
-    
+
     elif self.state == "BLOCKED":
         if min_all > 0.55:
             self.state = "NAVIGATING"
@@ -373,35 +382,35 @@ def compute_grasp_point(self, detection, depth_image, camera_info):
     bbox = detection['bbox']
     bbox_center_x = int(bbox['x'] + bbox['w'] / 2)
     bbox_center_y = int(bbox['y'] + bbox['h'] / 2)
-    
+
     # Sample depth with median filtering
     depth_patch = depth_image[
         max(0, bbox_center_y - 4):min(depth_image.shape[0], bbox_center_y + 4),
         max(0, bbox_center_x - 4):min(depth_image.shape[1], bbox_center_x + 4)
     ]
     depth_m = np.median(depth_patch[depth_patch > 0.2])
-    
+
     if np.isnan(depth_m) or depth_m > 1.5:
         return None
-    
+
     # Pinhole camera back-projection
     fx = camera_info.K[0]
     fy = camera_info.K[4]
     cx = camera_info.K[2]
     cy = camera_info.K[5]
-    
+
     x_cam = (bbox_center_x - cx) * depth_m / fx
     y_cam = (bbox_center_y - cy) * depth_m / fy
     z_cam = depth_m
-    
+
     # Transform to robot base_link frame
     x_robot = z_cam
     y_robot = -x_cam
-    
+
     # Compute arm pan and reach
     pan_angle = math.atan2(y_robot, x_robot)
     reach_distance = math.sqrt(x_robot**2 + y_robot**2)
-    
+
     return pan_angle, reach_distance, z_cam
 ```
 
@@ -412,18 +421,21 @@ def compute_grasp_point(self, detection, depth_image, camera_info):
 **Current State**: Alpha (Active Development)
 
 The system is fully functional in Gazebo simulation and successfully demonstrates all core concepts:
+
 - Dynamic costmap adaptation works reliably
 - YOLO integration provides semantic context
 - State machine navigation handles multi-waypoint missions
 - Mobile manipulation and deadlock recovery operational
 
 **In Progress**:
+
 - Real-world hardware deployment on physical Clearpath Husky A200
 - Integration of 3D LiDAR for volumetric obstacle representation
 - SLAM backend (RTAB-Map) for drift correction in real deployments
 - Learning-based grasp planning using reinforcement learning
 
 **Known Limitations**:
+
 - Odometry drift accumulation in real hardware (no SLAM yet)
 - Pre-computed arm trajectories limited to specific object classes and orientations
 - 2D LiDAR cannot detect overhanging obstacles or negative obstacles (drop-offs)
@@ -445,11 +457,11 @@ For contributions, bug reports, or feature requests, please open an issue or sub
 
 ## References
 
-1. S. Thrun, W. Burgard, and D. Fox, *Probabilistic Robotics*. MIT Press, 2005.
-2. S. Macenski et al., "Robot Operating System 2: Design, Architecture, and Uses in the Wild," *Science Robotics*, vol. 7, no. 66, 2022.
-3. E. Marder-Eppstein et al., "The Office Marathon: Robust Navigation in an Indoor Office Environment," in *Proc. ICRA*, 2010.
-4. D. Fox, W. Burgard, and S. Thrun, "The Dynamic Window Approach to Collision Avoidance," *IEEE RA Magazine*, vol. 4, no. 1, 1997.
-5. J. Redmon et al., "You Only Look Once: Unified, Real-Time Object Detection," in *Proc. CVPR*, 2016.
+1. S. Thrun, W. Burgard, and D. Fox, _Probabilistic Robotics_. MIT Press, 2005.
+2. S. Macenski et al., "Robot Operating System 2: Design, Architecture, and Uses in the Wild," _Science Robotics_, vol. 7, no. 66, 2022.
+3. E. Marder-Eppstein et al., "The Office Marathon: Robust Navigation in an Indoor Office Environment," in _Proc. ICRA_, 2010.
+4. D. Fox, W. Burgard, and S. Thrun, "The Dynamic Window Approach to Collision Avoidance," _IEEE RA Magazine_, vol. 4, no. 1, 1997.
+5. J. Redmon et al., "You Only Look Once: Unified, Real-Time Object Detection," in _Proc. CVPR_, 2016.
 6. Ultralytics, "YOLOv8 Documentation," https://docs.ultralytics.com, 2023.
 7. Clearpath Robotics, "Husky A200 Robot Platform," https://clearpathrobotics.com, 2023.
 
