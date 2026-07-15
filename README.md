@@ -215,43 +215,43 @@ A five-waypoint navigation mission was conducted in a Gazebo simulation environm
 
 ### Obstacle Distance Over Time
 
-![Closest Obstacle Distance](./logs/01_distance.png)
+![Closest Obstacle Distance](./graphs/01_distance.png)
 
 The distance plot shows the robot's minimum approach distance to obstacles throughout the mission. Dips to the emergency threshold (0.45m, red dashed line) correspond to BLOCKED state activation and turn-commitment avoidance maneuvers.
 
 ### Robot State Timeline
 
-![Robot State Timeline](./logs/02_state_timeline.png)
+![Robot State Timeline](./graphs/02_state_timeline.png)
 
 The color-coded state timeline visualizes transitions between navigation states. NAVIGATING (green) dominates, with TURN_COMMIT (orange) and ARM_BLOCKED (purple) segments indicating obstacle avoidance and deadlock recovery events.
 
 ### Velocity Commands
 
-![Command Velocities](./logs/03_velocity.png)
+![Command Velocities](./graphs/03_velocity.png)
 
 Linear velocity (blue) shows context-driven speed selection, while angular velocity (orange) exhibits characteristic point-turn patterns during obstacle avoidance. Speed reduction is visible in narrow passages (t=50-100s).
 
 ### LiDAR Sector Distances
 
-![LIDAR Sector Analysis](./logs/04_sectors.png)
+![LIDAR Sector Analysis](./graphs/04_sectors.png)
 
 The three sector distances (center, left, right) reveal asymmetric obstacle distributions. Frequent separation of traces indicates the robot navigated through non-symmetric environments requiring directional selection during turns.
 
 ### Navigation Path with Waypoints
 
-![Robot Path](./logs/05_path.png)
+![Robot Path](./graphs/05_path.png)
 
 The trajectory plot shows the robot's actual path (color-coded by time progression) through all five waypoints, with visible deviations at obstacles and smooth arrivals at waypoint locations.
 
 ### Object Detection Summary
 
-![Detection Counts](./logs/06_detection_counts.png)
+![Detection Counts](./graphs/06_detection_counts.png)
 
 YOLO detected 44 person instances, 2 surfboards, and single instances of bird, frisbee, banana, and umbrella. Person class dominance reflects the stationary human-shaped obstacles in the simulation environment.
 
 ### Detection Events Timeline
 
-![Detection Timeline](./logs/07_detection_timeline.png)
+![Detection Timeline](./graphs/07_detection_timeline.png)
 
 Detection events cluster around t=200-250s (WP3 to WP4 transit) and t=280-300s (WP4 to WP5 transit), corresponding to obstacle-dense regions of the path.
 
