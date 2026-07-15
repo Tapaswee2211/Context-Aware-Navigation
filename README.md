@@ -273,7 +273,7 @@ Recommended playback speed: 2x or 4x (original mission runtime 330 seconds).
 
 ---
 
-## Optional: Code Examples
+## Code Snippets
 
 ### Context Manager - LiDAR Density Classification
 
@@ -451,8 +451,6 @@ The system is fully functional in Gazebo simulation and successfully demonstrate
 
 ## Contributing
 
-This project is actively developed as part of the Bachelor of Technology (AI and Robotics) program at Vellore Institute of Technology.
-
 For contributions, bug reports, or feature requests, please open an issue or submit a pull request.
 
 ## References
@@ -464,15 +462,3 @@ For contributions, bug reports, or feature requests, please open an issue or sub
 5. J. Redmon et al., "You Only Look Once: Unified, Real-Time Object Detection," in _Proc. CVPR_, 2016.
 6. Ultralytics, "YOLOv8 Documentation," https://docs.ultralytics.com, 2023.
 7. Clearpath Robotics, "Husky A200 Robot Platform," https://clearpathrobotics.com, 2023.
-
-## License
-
-This project is released under the MIT License. See LICENSE file for details.
-
----
-
-**Author**: DASARI TAPASWEE  
-**Affiliation**: School of Computer Science and Engineering, Vellore Institute of Technology  
-**Last Updated**: April 2026
-
-For inquiries or collaboration requests, contact the development team at robotics.vit@example.com.
