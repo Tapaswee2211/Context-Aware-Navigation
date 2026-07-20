@@ -257,7 +257,7 @@ Detection events cluster around t=200-250s (WP3 to WP4 transit) and t=280-300s (
 
 ## Video Demonstration
 
-[**Video Demonstrating Full Mission Execution**](./demo.gif)
+![Video Demonstrating Full Mission Execution](./demo.gif)
 
 This video shows:
 
@@ -268,8 +268,6 @@ This video shows:
 - ARM_BLOCKED state activation and autonomous arm deployment during deadlock
 - Recovery maneuver execution and return to navigation
 - Successful waypoint arrivals and final mission completion
-
-Recommended playback speed: 2x or 4x (original mission runtime 330 seconds).
 
 ---
 
