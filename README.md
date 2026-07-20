@@ -1,6 +1,6 @@
 # Context-Aware Planner: Dynamic Costmap Adaptation for Autonomous Mobile Robots
 
-![Robot Model Configuration](./configuration.png)
+![Robot Model Configuration](./config.png)
 
 A ROS 2-based autonomous mobile robot system that dynamically adapts its navigation behavior and motion planning parameters in real time by fusing LiDAR-based spatial context classification with semantic object detection via YOLOv8. Validated on the Clearpath Husky A200 with 6-DOF robotic arm integration in Gazebo simulation.
 
