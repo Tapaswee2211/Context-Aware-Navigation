@@ -257,7 +257,7 @@ Detection events cluster around t=200-250s (WP3 to WP4 transit) and t=280-300s (
 
 ## Video Demonstration
 
-[**Video Demonstrating Full Mission Execution**](./demo.webm)
+[**Video Demonstrating Full Mission Execution**](./demo.gif)
 
 This video shows:
 
