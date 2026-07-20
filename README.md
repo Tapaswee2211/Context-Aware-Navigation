@@ -1,5 +1,7 @@
 # Context-Aware Planner: Dynamic Costmap Adaptation for Autonomous Mobile Robots
 
+![Robot Model Configuration](./configuration.png)
+
 A ROS 2-based autonomous mobile robot system that dynamically adapts its navigation behavior and motion planning parameters in real time by fusing LiDAR-based spatial context classification with semantic object detection via YOLOv8. Validated on the Clearpath Husky A200 with 6-DOF robotic arm integration in Gazebo simulation.
 
 ## Overview
@@ -257,19 +259,7 @@ Detection events cluster around t=200-250s (WP3 to WP4 transit) and t=280-300s (
 
 ## Video Demonstration
 
-![Video Demonstrating Full Mission Execution](./demo.gif)
-
-This video shows:
-
-- Initial robot startup and arm salute sequence
-- Navigation through open areas with context classification as OPEN
-- Entry into narrow shelving aisles with dynamic costmap reconfiguration to NARROW
-- YOLO-driven stops in response to detected persons
-- ARM_BLOCKED state activation and autonomous arm deployment during deadlock
-- Recovery maneuver execution and return to navigation
-- Successful waypoint arrivals and final mission completion
-
----
+## ![Video Demonstrating Full Mission Execution](./demo.gif)
 
 ## Code Snippets
 
